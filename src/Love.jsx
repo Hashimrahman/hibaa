@@ -1,47 +1,40 @@
 import { useEffect, useMemo, useState } from "react";
 import bgVideo from "./assets/bgl2.mp4";
 import { FaArrowRightLong } from "react-icons/fa6";
-import Swal from "sweetalert2";
 
 const Love = () => {
   const sentences = useMemo(
     () => [
-      "Hey Perakka kutti ",
-      "Sugalle anak 👀",
-      "Iyy vicharikndavum what coconut🥥 is this ",
-      "lleee 😌",
-      "jst see 😜😎",
-      "Ee dance patt onnm enk nadakoola 🥴",
-      "pinne aake illath dhaa ithan 💻",
-      "appo paranj vannath nthann vechal ",
-      "Sabaron ki zindagi jo kabhi nahi kadam ho jate hai",
-      "manassilayillalloo",
-      "nnlm kedakate oru punchn 😝",
-      "So Lets come to the point 📌",
-      "Inne pattit lla oru karym aan parayn povne 🫣",
-      "ikkalamathrayum jeevichath ottak ( I mean single 🥲)",
-      "Ippo llathm angne thannee 🚶",
-      "Pakshe edak eppolo oru ullil oru aagrhm ",
-      "Koode oral koodi venm enn 😁😜",
-      "Aagrhm mathrm indayit karyallallo aal koodi vende 🚶",
-      "Angne aa aagrahm safaleekarikan orale thedi erangi 🚲",
-      "kalam korach aayi ttoo",
-      "Pakshe enthoo manass aareyum angt sammayknilla 🫠",
-      "Angne ann avde ",
-      "Majnu nte laila ne ppole 😁",
-      "Moideen nte kanjana mala ne pole 😉",
-      "Nee vannu 🫵🏼🥺",
-      "Aadym onnm manass sammaychila 🫣",
-      "pakshe ante aa chiriku munnil manassin adiyarav parayandi vannu 🥹🥺",
-      "That moment, aa nimisham",
-      "Appo orapichatha njan",
-      "U r the one 🫵🏼❤️",
-      "The one i have been waiting for 🥰",
-      "Njn kandethm enn panikar paranja penkutti 😉",
-      "Njn ithrayum kalam thiranjath ninak vendi aayirunnu enn",
-      "Appo engnaa 😁",
-      "Povallee",
-      "kanana chayayil aadu mekkan 😌😎",
+      "hellooo babyy!!😌🫶🏻",
+      "assalamu alaikumm",
+      "ndhhaa paadd sugellee",
+      "idhh ppo ndhha ival aych thanne nn vchrkkndvm lee",
+      "onnulyyaa vrdhe oru reslle idhekke🤓",
+      "njmml jst 1 yr maathrm aan oru clsill ndynedhh but we became so close by that time",
+      "ethra pettennaale njmml adthee",
+      "sthymm prnja ippo nte koode illa aarekatluu annet eytt eykku njn close aayt ille",
+      "you know a lot abt me than they do",
+      "andd i am soo lucky to have youu",
+      "shrkkm nallm miss eyyn ndd🥲",
+      "i really miss your kadikkel aan kaaatteling me🙂",
+      "ini ennaa anne kaana enna adhekke onn kittaa",
+      "tution kynjj schoolkk ethmbo miss clsl attendance edkkan thodngeet ndvmm nnt njmml porth aan koodthel divsm ndvl illee",
+      "mikka divsm njmml rndalm mthre girls ndvl llu adhekke shrkkm miss eyyn nd",
+      "aahmm ndheyyana ini adhonnu thrchh verulaalo",
+      "btw ini nammakk krythilekk kadkkaam",
+      "actually inn njn kore plan itteenu",
+      "pashee onnu nadnneela so oru kunji giftt or whatever",
+      "you know what you are really an adipoly person",
+      "ante aa thakkaali mokhavm chund kond illa kooprayanglm",
+      "pnne your main item.... adh ndhaann njn pryn illa hope you understand 😌",
+      "aa dance ekke ini enna nkk kanan kayya",
+      "sthym prnjjaa nee oru killaadi thanne aan😹",
+      "anyway shuttumaniiii krche late aaykn nn aryaa",
+      "korch alla krche thoone late aaykn nnalum",
+      "haappyy berthdaayyy baabbygirll🐒💋",
+      "santhoooshaylee nte kuttikk🙂‍↔️🫶🏻",
+      "luvvv yoouuhhh💗",
+      "mwahhhh💋",
     ],
     []
   );
@@ -49,11 +42,22 @@ const Love = () => {
   const [text, setText] = useState("");
   const [sentenceIndex, setSentenceIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const [showOptions, setShowOptions] = useState(false);
+  const [showBirthday, setShowBirthday] = useState(false);
+  const confettiPieces = useMemo(
+    () =>
+      Array.from({ length: 48 }, (_, index) => ({
+        id: index,
+        left: `${(index * 17) % 100}%`,
+        delay: `${(index % 12) * 0.12}s`,
+        duration: `${2.8 + (index % 5) * 0.25}s`,
+        rotation: `${(index * 37) % 360}deg`,
+      })),
+    []
+  );
 
   useEffect(() => {
     if (sentenceIndex >= sentences.length) {
-      setShowOptions(true);
+      setShowBirthday(true);
       return;
     }
 
@@ -75,59 +79,9 @@ const Love = () => {
       setCharIndex(0);
       setSentenceIndex((prev) => prev + 1);
     } else {
-      setShowOptions(true);
+      setShowBirthday(true);
     }
   };
-
-  const handleYes = () => {
-    console.log("hello")
-    Swal.fire({
-      title: "Yay! ❤️",
-      text: "I knew It, I know it was a Yes 😎🎉",
-      timer: 3000,
-      // showLoaderOnConfirm: true,
-      timerProgressBar: true,
-      showConfirmButton: false,
-      customClass: {
-        popup: "custom-swal-popup", // Apply a custom class
-      },
-      // willClose: () => navigate("/celebration"),
-      willClose: () => {
-        Swal.fire({
-          text : "Inippo Flower kitteella nn lla parathi venda  Athm settakikkn Wait 😎",
-          showConfirmButton: false,
-          timerProgressBar: true,
-          timer: 3000,
-          customClass: {
-            popup: "custom-swal-popup2", // Apply a custom class
-          },
-          willClose: () => {
-            window.location.href = "https://hashimrahman.github.io/flower/"; // Replace with the target URL
-          }
-        })
-      },
-    });
-  };
-
-  const handleNo = () => {
-  Swal.fire({
-    title: "No no no no nooo!",
-    text: "Njn Sammaykoola",
-    timer: 3000,
-    showConfirmButton: false,
-    showCloseButton: true,
-    timerProgressBar: true,
-    customClass: {
-      popup: "custom-swal-popup2",
-      closeButton: "custom-swal-close",
-    },
-    willClose: () => {
-      console.log("Closed via timer or close button");
-
-      // 👉 your logic here
-    },
-  });
-};
 
   return (
     <div className="relative flex flex-col items-center justify-center h-screen text-white overflow-hidden">
@@ -145,11 +99,37 @@ const Love = () => {
 
       <div className="floating-hearts pointer-events-none absolute inset-0 z-[5]">
         {Array.from({ length: 12 }, (_, i) => `heart-${i + 1}`).map((cls) => (
-          <span key={cls} className={`heart ${cls}`}>❤️</span>
+          <span key={cls} className={`heart ${cls}`}>
+            ❤️
+          </span>
         ))}
       </div>
 
-      {!showOptions && (
+      {showBirthday && (
+        <>
+          <div className="confetti-pop pointer-events-none absolute inset-0 z-[15]">
+            {confettiPieces.map((piece) => (
+              <span
+                key={piece.id}
+                className="confetti-piece"
+                style={{
+                  left: piece.left,
+                  animationDelay: piece.delay,
+                  animationDuration: piece.duration,
+                  "--rotation": piece.rotation,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="birthday-card relative z-20 mx-4 max-w-3xl w-full text-center">
+            <h1 className="birthday-title">Happy Birthday</h1>
+            <p className="birthday-message">Wishing you the happiest day ever.</p>
+          </div>
+        </>
+      )}
+
+      {!showBirthday && (
         <div
           key={sentenceIndex}
           className="text-card relative z-10 mx-4 max-w-3xl w-full"
@@ -165,7 +145,7 @@ const Love = () => {
         </div>
       )}
 
-      {!showOptions ? (
+      {!showBirthday && (
         <button
           onClick={handleNextSentence}
           className="next-button text-lg flex gap-3 justify-center items-center font-semibold uppercase z-20"
@@ -173,21 +153,6 @@ const Love = () => {
           Next
           <FaArrowRightLong className="arrow-icon" />
         </button>
-      ) : (
-        <div className="buttons-fade-in flex gap-6 mt-4 z-10 flex-wrap justify-center px-4">
-          <button
-            className="yes-button px-20 py-4 text-xl font-bold rounded-full"
-            onClick={handleYes}
-          >
-            Yes ❤️
-          </button>
-          <button
-            className="no-button px-14 py-4 text-lg font-semibold rounded-full"
-            onClick={handleNo}
-          >
-            No 😭💔
-          </button>
-        </div>
       )}
     </div>
   );
